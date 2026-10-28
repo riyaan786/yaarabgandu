@@ -113,25 +113,49 @@ export default function HomePage() {
       />
 
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <p className="eyebrow">Consumer awareness &amp; documentation</p>
+      <p className="eyebrow">Consumer warning — documentation of my experience</p>
       <h1 className="mt-3">
-        {SITE.businessName} — A Customer&apos;s Experience in Fraser Town,
-        Bangalore
+        {SITE.businessName} — My Experience in Fraser Town, Bangalore
       </h1>
       <blockquote className="quote-block mt-6">
-        This website documents my personal experience at {SITE.businessName} in
-        Fraser Town, Bangalore, including concerns regarding customer service,
-        staff conduct, pricing, online reviews, and pedestrian access around the
-        premises.
+        I went to {SITE.businessName} in Fraser Town, Bangalore as a paying
+        customer. I was treated rudely, I heard staff use abusive language in
+        front of customers, I was charged more than I considered fair, I noticed
+        a suspicious burst of five-star reviews appearing at once, and I found
+        the footpath outside blocked by the shop&apos;s stock and parked vehicles.
+        This page documents what happened, with the evidence I have gathered.
       </blockquote>
-      <p className="note mt-6">
-        Everything below is written from my own perspective. Where I describe an
-        event, it is my account of what I personally experienced or observed.
-        Where documentation exists, it is displayed next to the relevant
-        statement so that readers can review it and form their own conclusions. I
-        have not stated anything as an established fact unless the supporting
-        documentation is available to me.
-      </p>
+      <div className="callout mt-6">
+        <strong>Important legal notice.</strong> Everything on this page is my
+        personal account, opinion and recollection — not a statement of
+        established legal fact. I am not accusing anyone of a crime, and nothing
+        here should be read as a legal finding that any law or rule was broken.
+        Readers should review the supporting evidence and reach their own
+        conclusion.
+      </div>
+
+      {/* ── Images at the top ────────────────────────────────── */}
+      <section id="evidence-top" className="mt-10 scroll-mt-24">
+        <h2 className="mt-0">Evidence — Photographs &amp; Documents</h2>
+        <p className="mt-2 text-[0.93rem] leading-relaxed text-ink-soft">
+          Photographs and documents I have published so far. Click any image to
+          view it larger.
+        </p>
+        {evidence.length > 0 ? (
+          <Gallery images={evidence} compact />
+        ) : (
+          <p className="note mt-6">
+            No published photographs yet. Upload evidence through the Admin
+            dashboard (top-right → ADMIN) to publish it here.
+          </p>
+        )}
+        {screenshotImages.length > 0 && (
+          <div className="mt-8">
+            <h3>Review screenshots</h3>
+            <Gallery images={screenshotImages} compact />
+          </div>
+        )}
+      </section>
 
       <nav aria-label="On this page" className="card mt-8 p-5">
         <h2 className="eyebrow mt-0">On this page</h2>
@@ -159,28 +183,22 @@ export default function HomePage() {
       <section id="customer-service" className="mt-14 scroll-mt-20">
         <h2 className="mt-0">My Experience With Customer Service</h2>
         <p>
-          When I visited {SITE.businessName} in Fraser Town, Bangalore, I did what
-          any customer does: I arrived expecting to be spoken to with basic
-          courtesy, to have my questions answered, and to be treated with the
-          ordinary respect that a customer-facing business extends to the people
-          who walk through its doors.
-        </p>
-        <p>
-          In my experience, that is not what happened. I was treated rudely. The
-          way I was spoken to made me feel unwelcome and uncomfortable, and I left
-          the premises feeling that a simple transaction had turned into an
-          unpleasant encounter. I am not describing a disagreement about a
-          technical detail — I am describing the manner in which I, as a paying
-          customer, was addressed.
+          I walked into {SITE.businessName} in Fraser Town, Bangalore as a paying
+          customer expecting basic courtesy. Instead, I was treated rudely. The
+          staff spoke to me in a way that made me feel unwelcome and
+          uncomfortable. A simple transaction turned into an unpleasant
+          encounter because of the manner in which I was addressed.
         </p>
         <p>
           Customers who spend their money at a business are entitled to courteous
-          communication. Being polite costs nothing, and it is the minimum that
-          anyone should expect when they are paying for a product or a service.
-          This section records my own experience. I am not claiming that every
-          customer of this business has received the same treatment, and I have no
-          way of knowing what other customers experienced. What I can document is
-          what happened to me.
+          communication. Being polite costs nothing. What I experienced was not
+          a technical disagreement — it was rude, disrespectful treatment from
+          people who were taking my money.
+        </p>
+        <p>
+          This is my account of what happened to me. I am not claiming every
+          customer received the same treatment. But I can document what happened
+          to me, and I have no reason to soften it.
         </p>
         <div className="callout">
           <strong>Evidence slot.</strong> The details below are the fields I use to
@@ -199,32 +217,27 @@ export default function HomePage() {
       <section id="staff-language" className="mt-14 scroll-mt-20">
         <h2 className="mt-0">Language and Behaviour in Front of Customers</h2>
         <p>
-          During my visit I heard immature, abusive and inappropriate language
-          being used between members of staff — co-workers — while customers,
-          including me, were standing right there in the shop.
+          While I was standing in the shop as a customer, I heard immature,
+          abusive, and inappropriate language being used between staff
+          members — co-workers — while customers were present.
         </p>
         <p>
-          I want to be careful and accurate about what I am describing. I am not
-          exaggerating the incident, and I am not suggesting that every
-          conversation inside the premises was abusive. What I experienced was a
-          period of audible, aggressive and inappropriate communication between
-          staff members, delivered in a customer-facing area where it could be
-          heard by the people paying for the business&apos;s services.
+          I am not exaggerating. I am not suggesting every conversation in the
+          premises was abusive. But what I heard was audible, aggressive,
+          inappropriate communication between staff, delivered in a
+          customer-facing area where paying customers could hear it.
         </p>
         <p>
-          Whether employees are speaking to a customer or to each other, a
+          Whether employees are speaking to customers or to each other, a
           customer should not have to stand in a shop and feel uncomfortable
           because of aggressive or abusive communication around them. Shouting,
-          swearing or belittling language between colleagues in front of
-          customers creates an intimidating environment, and it says something
-          about how a business regards the people standing in front of its
-          counter.
+          swearing, or belittling language between colleagues in front of
+          customers creates an intimidating environment.
         </p>
         <p>
-          This is my account of what I heard and observed. If I am able to obtain
-          supporting evidence — such as recordings, names, or statements from
-          other people present — I will publish it alongside this section rather
-          than simply asserting it.
+          This is my account of what I heard. If I obtain supporting evidence
+          such as recordings or statements from others present, I will publish it
+          here rather than simply asserting it.
         </p>
         <VisitRecordCard
           record={languageRecord}
@@ -593,12 +606,16 @@ export default function HomePage() {
             finding that any individual review was written dishonestly.
           </li>
           <li>
+            Statements about reviews are my opinion and suspicion, not proven
+            accusations against any named reviewer.
+          </li>
+          <li>
             It is not anonymous — I take responsibility for what is written here
             and am prepared to correct anything I have got wrong, using the{" "}
             <a href="#contact">corrections form</a> below.
           </li>
         </ul>
-        <div className="callout">
+        <div className="callout mt-6">
           <strong>If you are the owner or a staff member.</strong> If any statement
           on this page is factually incorrect, please use the corrections form at
           the bottom of this page, describing what is wrong and what evidence
