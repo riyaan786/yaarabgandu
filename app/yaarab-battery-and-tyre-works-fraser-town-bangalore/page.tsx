@@ -441,17 +441,10 @@ export default function HomePage() {
           for the public, not only an inconvenience to me.
         </p>
         <p>
-          I am describing what I have observed at the location and on the dates
-          recorded below. Where I have photographs, they are in the evidence
-          gallery. Where I have taken this matter up with any authority, the
-          details are recorded in the table beneath — including the date, the
-          authority, the reference number and any response I received. That table
-          also states plainly whether anything was done about it; where nothing
-          was done, I say so. I will not claim that a complaint was filed or
-          acknowledged unless I can document it. Whether any placement or parking
-          is permissible under local rules is a matter for the concerned
-          authorities to determine, and I am not making a legal determination
-          here.
+          I have also raised this footpath encroachment with BBMP — I messaged
+          them and created a ticket about the footpath being blocked by the
+          shop&apos;s stock and parked vehicles. As far as I am aware, no action
+          has been taken on it so far. The footpath remains obstructed.
         </p>
 
         {authority.length > 0 && authority.some((log) => !log.response) && (
