@@ -1,0 +1,28 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+  function_directory = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Root redirects to the canonical YAARAB page
+[[redirects]]
+  from = "/"
+  to = "/yaarab-battery-and-tyre-works-fraser-town-bangalore"
+  status = 307
+  force = true
+
+# Serve the Google verification file with correct content-type
+[[headers]]
+  for = "/googledc0c2b1b335e05db.html"
+  [headers.values]
+    Content-Type = "text/html; charset=UTF-8"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
