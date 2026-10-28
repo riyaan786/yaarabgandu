@@ -138,23 +138,80 @@ export default function HomePage() {
       <section id="evidence-top" className="mt-10 scroll-mt-24">
         <h2 className="mt-0">Evidence — Photographs &amp; Documents</h2>
         <p className="mt-2 text-[0.93rem] leading-relaxed text-ink-soft">
-          Photographs and documents I have published so far. Click any image to
-          view it larger.
+          Photographs and documents from my visit to {SITE.businessName}. Click
+          any image to view it larger.
         </p>
-        {evidence.length > 0 ? (
-          <Gallery images={evidence} compact />
-        ) : (
-          <p className="note mt-6">
-            No published photographs yet. Upload evidence through the Admin
-            dashboard (top-right → ADMIN) to publish it here.
-          </p>
-        )}
-        {screenshotImages.length > 0 && (
-          <div className="mt-8">
-            <h3>Review screenshots</h3>
-            <Gallery images={screenshotImages} compact />
-          </div>
-        )}
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            "1000145967.jpg",
+            "1000145971.jpg",
+            "1000145973.jpg",
+            "1000145977.jpg",
+            "Screenshot_20260831_202557_Maps.jpg",
+            "Screenshot_20260831_202609_Maps.jpg",
+          ].map((file, i) => (
+            <figure key={file} className="card-hover overflow-hidden rounded-lg border border-line bg-slate-100">
+              <button
+                type="button"
+                className="block aspect-[4/3] overflow-hidden bg-slate-200"
+                onClick={() => {
+                  const modal = document.getElementById("evidence-modal");
+                  const img = document.getElementById(
+                    "evidence-modal-img"
+                  ) as HTMLImageElement | null;
+                  if (modal && img) {
+                    img.src = `/${file}`;
+                    modal.classList.remove("hidden");
+                    modal.classList.add("flex");
+                  }
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/${file}`}
+                  alt={`Evidence photo ${i + 1}`}
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                />
+              </button>
+              <figcaption className="p-2 text-[0.85rem] text-ink-soft truncate">
+                {file}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        {/* Full-screen modal */}
+        <div
+          id="evidence-modal"
+          className="hidden fixed inset-0 z-50 flex items-center justify-center bg-navy-deep/90 p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              e.currentTarget.classList.add("hidden");
+              e.currentTarget.classList.remove("flex");
+            }
+          }}
+        >
+          <button
+            type="button"
+            className="absolute top-4 right-4 text-white btn btn-outline"
+            onClick={() => {
+              const modal = document.getElementById("evidence-modal");
+              if (modal) {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex");
+              }
+            }}
+          >
+            Close
+          </button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            id="evidence-modal-img"
+            src=""
+            alt="Full-screen evidence"
+            className="max-h-[80vh] max-w-[90vw] object-contain bg-white rounded-lg shadow-2xl"
+          />
+        </div>
       </section>
 
       <nav aria-label="On this page" className="card mt-8 p-5">
@@ -666,16 +723,9 @@ export default function HomePage() {
             whether you would like your response to be published on this page.
           </li>
         </ul>
-        <p>
-          Substantiated corrections will be made. If you would like your response
-          published, it will be shown in a clearly marked section so readers can
-          see both sides.
-        </p>
         <CorrectionForm />
         <p className="hint mt-6">
           Location this page relates to: {SITE.businessName}, {SITE.locality}.
-          Submissions are stored privately and reviewed before any of their content
-          is published.
         </p>
       </section>
 
